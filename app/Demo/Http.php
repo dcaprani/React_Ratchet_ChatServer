@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace Demo;
 define("HTDOCS", realpath(__DIR__."/../../htdocs"));
@@ -36,3 +36,4 @@ class Http {
 		return;
 	}
 }
+?>

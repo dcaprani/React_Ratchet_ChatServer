@@ -14,7 +14,7 @@
 </head>
 
 <script type="text/javascript">
-var ws_url = 'ws://'+window.location.hostname+':8080/chat';
+var ws_url = 'ws://'+window.location.hostname+':8080/';
 var conn = new WebSocket(ws_url);
 var msg_num = 0;
 var user_color = "000000";
@@ -39,8 +39,8 @@ conn.onmessage = function(e) {
 	
 	switch (data.type) {
 		case "chat":
-			if (data.from) {
-				message += "<b>["+data.from+"]</b> ";
+			if (data.name) {
+				message += "<b>["+data.name+"]</b> ";
 			}
 			message += escape_html(data.message);
 			if (data.color) {

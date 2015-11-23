@@ -19,9 +19,9 @@ echo "Web server active at http://localhost:8000/\n";
 
 
 $app = new Ratchet\App($hostname, 8080, $ip, $loop);
-$app->route("/chat", new Demo\Chat());
+$app->route("/", new Demo\Chat());
 
-echo "Chat server active at ws://localhost:8080/chat\n";
+echo "Chat server active at ws://localhost:8080/\n";
 
 $app->run();
 

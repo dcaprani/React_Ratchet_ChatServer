@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace Demo;
 
@@ -120,12 +120,12 @@ class Chat implements MessageComponentInterface {
 		$this->validateName($name);
 		$this->validateColor($color);
 		
-		$conn->send(json_encode([
+		/*$conn->send(json_encode([
 			"type" => "auth",
 			"valid" => true,
 			"name" => $name,
 			"color" => $color,
-		]));
+		]));*/
 		
 		$info['auth'] = true;
 		$info['name'] = $name;
@@ -137,14 +137,15 @@ class Chat implements MessageComponentInterface {
 		printf(" + CHAT (%d / %s): %s\n", $info['id'], $info['name'], $data->message);
 		if ($info['auth'] === true) {
 			foreach ($this->clients as $client) {
-				if ($client !== $from_conn) {
+				//if ($client !== $from_conn) {
+				//echo "Sending to Client:\t" + $this->$client->info['id'] + "\nFrom Conn:\t";
 					$client->send(json_encode([
 						"type" => "chat",
-						"from" => $info['name'],
+						"name" => $info['name'],
 						"color" => $info['color'],
 						"message" => $data->message,
 					]));
-				}
+				//}
 			}
 		}
 	}
